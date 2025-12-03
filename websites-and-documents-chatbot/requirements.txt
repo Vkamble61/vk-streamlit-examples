@@ -1,0 +1,20 @@
+# Original chatbot requirements
+streamlit
+langchain-openai
+langchain-community
+langchain-text-splitters
+chromadb
+beautifulsoup4
+requests
+tiktoken
+python-dotenv
+exa-py
+PyPDF2
+
+# CrewAI chatbot requirements
+crewai
+crewai-tools
+
+# Run CrewAI chatbot:
+# cd src/web_and_docs_chatbot
+# streamlit run streamlit_bot.py
