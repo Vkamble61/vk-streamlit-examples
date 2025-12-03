@@ -7,8 +7,19 @@ from dotenv import load_dotenv
 from bot_crew import create_agents, create_tasks
 from tools import fetch_and_store_content, process_pdf_file
 
-# Load environment variables
+# Load environment variables from .env file (for local development)
 load_dotenv()
+
+# For Streamlit Cloud deployment, use st.secrets
+# This ensures API keys work both locally and in deployment
+if hasattr(st, 'secrets'):
+    try:
+        if 'OPENAI_API_KEY' in st.secrets:
+            os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
+        if 'EXA_API_KEY' in st.secrets:
+            os.environ['EXA_API_KEY'] = st.secrets['EXA_API_KEY']
+    except Exception:
+        pass  # If secrets are not configured, fall back to .env
 
 # Streamlit UI
 st.set_page_config(page_title="Website and Document Chatbot", page_icon="🤖", layout="wide")
